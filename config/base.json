@@ -2,25 +2,25 @@
     "prize_pool": {
         "tier_liquidity_utilization_rate": "500000000000000000",
         "draw_period_seconds": "86400",
-        "first_draw_starts_at": "1715896800",
+        "first_draw_starts_at": "1723096800",
         "grand_prize_period_draws": "91",
         "number_of_tiers": "5",
         "tier_shares": "100",
         "canary_shares": "4",
         "reserve_shares": "30",
         "draw_timeout": "60",
-        "prize_token": "0x4200000000000000000000000000000000000006"
+        "prize_token": "0x0a93a7BE7e7e426fC046e204C44d6b03A302b631"
     },
 
     "stake_to_win": {
         "staking_vault": {
-            "asset": "0xd652C5425aea2Afd5fb142e120FeCf79e18fafc3",
-            "name": "Staked POOL",
-            "symbol": "stPOOL"
+            "asset": "0x0a93a7BE7e7e426fC046e204C44d6b03A302b631",
+            "name": "Staked NOUNS",
+            "symbol": "stNOUNS"
         },
         "prize_vault": {
-            "name": "Prize POOL",
-            "symbol": "przPOOL"
+            "name": "Win NOUNS",
+            "symbol": "winNOUNS"
         }
     },
         

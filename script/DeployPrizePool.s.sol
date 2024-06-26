@@ -2,15 +2,12 @@
 pragma solidity 0.8.24;
 
 import "forge-std/console2.sol";
-
 import { ScriptBase, Configuration } from "./ScriptBase.sol";
 import { SafeCast } from "openzeppelin/utils/math/SafeCast.sol";
-
-import { ERC20 } from "openzeppelin/token/ERC20/ERC20.sol";
+import { ERC20 } from "openzeppelin/token/ERC20/ERC20.sol";  // Correct import for ERC20
+import { IERC20 } from "openzeppelin/token/ERC20/IERC20.sol";  // Correct import for IERC20
 import { ud2x18 } from "prb-math/UD2x18.sol";
 import { sd1x18 } from "prb-math/SD1x18.sol";
-
-import { IERC20 } from "openzeppelin/token/ERC20/IERC20.sol";
 import { ClaimerFactory } from "pt-v5-claimer/ClaimerFactory.sol";
 import { TpdaLiquidationPairFactory, TpdaLiquidationPair } from "pt-v5-tpda-liquidator/TpdaLiquidationPairFactory.sol";
 import { TpdaLiquidationRouter } from "pt-v5-tpda-liquidator/TpdaLiquidationRouter.sol";
@@ -170,5 +167,16 @@ contract DeployPrizePool is ScriptBase {
 
         // vault booster factory
         new VaultBoosterFactory();
+    }
+
+    // Helper function to safely fetch token decimals with a fallback
+    function safeGetDecimals(address token) internal view returns (uint8) {
+        // Try to call decimals() and catch if the function doesn't exist
+        try ERC20(token).decimals() returns (uint8 decimals) {
+            return decimals;
+        } catch {
+            // Default to 18 decimals if the function call fails
+            return 18;
+        }
     }
 }
